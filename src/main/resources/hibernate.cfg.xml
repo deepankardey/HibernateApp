@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- SQL dialect -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/imcs1?createDatabaseIfNotExist=true</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">12345</property>
+
+ 		<!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
+
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		
+
+		<!-- Include all the mapping pojo classes -->
+		<mapping class="com.imcs.hibernate.entity.Customers" />
+		<mapping class="com.imcs.hibernate.entity.Orders" />
+		<mapping class="com.imcs.hibernate.entity.OrderProduct" />
+		<mapping class="com.imcs.hibernate.entity.Products" />  
+		
+<!-- 		<mapping class="com.imcs.entity.Course" />
+		<mapping class="com.imcs.entity.MarksDetails" />
+		<mapping class="com.imcs.entity.Student" />
+		<mapping class="com.imcs.entity.StudentAddress" /> -->
+		
+	</session-factory> 
+</hibernate-configuration>
