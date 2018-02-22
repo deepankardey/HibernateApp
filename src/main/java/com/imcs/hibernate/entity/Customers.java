@@ -12,8 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -54,47 +54,22 @@ public class Customers {
 	@Column(name="print_on_check")
 	private String printOnCheck;
 	
-	@Column(name="billing_street")
-	private String billingStreet;
-	
-	@Column(name="billing_city")
-	private String billingCity;
-	
-	@Column(name="billing_state")
-	private String billingState;
-	
-	@Column(name="billing_zip")
-	private Integer billingZip;
-	
-	@Column(name="billing_country")
-	private String billingCountry; 
-	
-	@Column(name="shipping_street")
-	private String shippingStreet; 
-	
-	@Column(name="shipping_city")
-	private String shippingCity;
-	
-	@Column(name="shipping_state")
-	private String shippingState;
-	
-	@Column(name="shipping_zip")
-	private Integer shippingZip;
-	
-	@Column(name="shipping_country")
-	private String shippingCountry;
-	
 	@Column(name="other_details")
 	private String otherDetails;
 	
-	@OneToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
-	@JoinColumn(name="customer_id")
+	@OneToMany(mappedBy="customer" , cascade = CascadeType.ALL , fetch = FetchType.EAGER)
 	private Set<Orders> orders = new HashSet<Orders>();
 	
+	@OneToOne(mappedBy="customer" , fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	private Address address;
+	
+	public Customers() {
+		super();
+	}
+	
+	
 	public Customers(String title, String firstName, String middleName, String lastName, String suffix, String email,
-			String company, String displayName, String printOnCheck, String billingStreet, String billingCity,
-			String billingState, Integer billingZip, String billingCountry, String shippingStreet, String shippingCity,
-			String shippingState, Integer shippingZip, String shippingCountry, String otherDetails) {
+			String company, String displayName, String printOnCheck, String otherDetails) {
 		super();
 		this.title = title;
 		this.firstName = firstName;
@@ -105,32 +80,11 @@ public class Customers {
 		this.company = company;
 		this.displayName = displayName;
 		this.printOnCheck = printOnCheck;
-		this.billingStreet = billingStreet;
-		this.billingCity = billingCity;
-		this.billingState = billingState;
-		this.billingZip = billingZip;
-		this.billingCountry = billingCountry;
-		this.shippingStreet = shippingStreet;
-		this.shippingCity = shippingCity;
-		this.shippingState = shippingState;
-		this.shippingZip = shippingZip;
-		this.shippingCountry = shippingCountry;
 		this.otherDetails = otherDetails;
 	}
-
-	public Customers(String firstName, String lastName, String email, String company) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.company = company;
-	}
-
+	
 	public Customers(Integer id, String title, String firstName, String middleName, String lastName, String suffix,
-			String email, String company, String displayName, String printOnCheck, String billingStreet,
-			String billingCity, String billingState, Integer billingZip, String billingCountry, String shippingStreet,
-			String shippingCity, String shippingState, Integer shippingZip, String shippingCountry,
-			String otherDetails) {
+			String email, String company, String displayName, String printOnCheck, String otherDetails) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -142,23 +96,9 @@ public class Customers {
 		this.company = company;
 		this.displayName = displayName;
 		this.printOnCheck = printOnCheck;
-		this.billingStreet = billingStreet;
-		this.billingCity = billingCity;
-		this.billingState = billingState;
-		this.billingZip = billingZip;
-		this.billingCountry = billingCountry;
-		this.shippingStreet = shippingStreet;
-		this.shippingCity = shippingCity;
-		this.shippingState = shippingState;
-		this.shippingZip = shippingZip;
-		this.shippingCountry = shippingCountry;
 		this.otherDetails = otherDetails;
 	}
-
-	public Customers() {
-		super();
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Customers ["
@@ -172,21 +112,10 @@ public class Customers {
 				+ "\n\t company=" + company+ ","
 				+ "\n\t displayName=" + displayName + ","
 				+ "\n\t printOnCheck=" + printOnCheck + ","
-				+ "\n\t billingStreet=" + billingStreet+ ","
-				+ "\n\t billingCity=" + billingCity + ","
-				+ "\n\t billingState=" + billingState + ","
-				+ "\n\t billingZip=" + billingZip+ ","
-				+ "\n\t billingCountry=" + billingCountry + ","
-				+ "\n\t shippingStreet=" + shippingStreet + ","
-				+ "\n\t shippingCity=" + shippingCity + ","
-				+ "\n\t shippingState=" + shippingState + ","
-				+ "\n\t shippingZip=" + shippingZip+","
-				+ "\n\t shippingCountry=" + shippingCountry + ","
 				+ "\n\t otherDetails=" + otherDetails + ","
-				+ "\n\t orders=" + orders
+				+ "\n\t Addres=" + address
+				/*+ "\n\t Orders=" + orders*/
 				+ "\n]";
 	}
-	
-	
 	
 }

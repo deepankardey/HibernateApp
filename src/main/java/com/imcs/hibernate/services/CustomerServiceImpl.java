@@ -1,5 +1,7 @@
 package com.imcs.hibernate.services;
 
+import java.util.List;
+
 import com.imcs.hibernate.dao.CustomerDao;
 import com.imcs.hibernate.entity.Customers;
 import com.imcs.hibernate.interfaces.CustomerDaoInterface;
@@ -25,6 +27,11 @@ public class CustomerServiceImpl implements CustomerServiceInterface {
 
 	public boolean deleteCustomer(int id) throws CustomException {
 		return customerDao.deleteCustomer(id);
+	}
+
+	@Override
+	public List<Customers> loadAllCustomers() throws CustomException {
+		return customerDao.loadAllCustomers();
 	}
 
 }

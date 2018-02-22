@@ -8,7 +8,7 @@
 		<!-- SQL dialect -->
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/imcs1?createDatabaseIfNotExist=true</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/imcs5?createDatabaseIfNotExist=true</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">12345</property>
 
@@ -21,6 +21,7 @@
 
 		<!-- Include all the mapping pojo classes -->
 		<mapping class="com.imcs.hibernate.entity.Customers" />
+		<mapping class="com.imcs.hibernate.entity.Address" />
 		<mapping class="com.imcs.hibernate.entity.Orders" />
 		<mapping class="com.imcs.hibernate.entity.OrderProduct" />
 		<mapping class="com.imcs.hibernate.entity.Products" />  
