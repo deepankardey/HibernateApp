@@ -201,8 +201,8 @@ public class CustomerApp {
 	}
 
 	private void addCustomer(Scanner sc)throws Exception {
-		Customers customer = enterCustomerDetails(sc);
-		Address address = enterAddressDetails(sc);
+		Customers customer = readCustomerDetails(sc);
+		Address address = readCustomersAddressDetails(sc);
 		address.setCustomer(customer);
 		customer.setAddress(address);
 		try {
@@ -227,7 +227,7 @@ public class CustomerApp {
 	private void updateCustomer(Scanner sc)throws Exception {
 		System.out.println("Enter Customer ID : ");
 		int id = sc.nextInt();
-		Customers customer = enterCustomerDetails(sc);
+		Customers customer = readCustomerDetails(sc);
 		customer.setId(id);
 		try {
 			if(customerServiceImpl.updateCustomer(customer))
@@ -247,7 +247,7 @@ public class CustomerApp {
 		return customerServiceImpl.loadAllCustomers();
 	}
 	
-	private Customers enterCustomerDetails(Scanner sc) {
+	private Customers readCustomerDetails(Scanner sc) {
 		
 		System.out.println("Enter Customer Title : ");
 		String title = sc.next();
@@ -276,7 +276,7 @@ public class CustomerApp {
 		return customer;
 	}
 	
-	private Address enterAddressDetails(Scanner sc) {
+	private Address readCustomersAddressDetails(Scanner sc) {
 		String shippingStreet = null,shippingCity = null,shippingState = null,shippingCountry = null;
 		int shippingZip = 0;
 		System.out.println("Enter Customer Billing street : ");
