@@ -381,7 +381,8 @@ public class CustomerApp {
 					for(OrderProduct op : orderProductSet) {
 						Products product = op.getProducts();
 						System.out.println(product);
-						total = total+product.getPrice();
+						System.out.println("Quantity : "+op.getQuantity());
+						total = total+(product.getPrice()*op.getQuantity());
 					}
 					System.out.println("+++++++Total Order Price: "+total+" ++++++++++++");
 				}
